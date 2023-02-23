@@ -1,0 +1,411 @@
+.results-summary-component {
+    --primary-color: #4C38F4;
+    --primary-color-gradient: linear-gradient(180deg, #6943FF 0%, #2F2CE9 100%);
+    --primary-color-shade: #4929D5;
+    --primary-color-shade-gradient: linear-gradient(180deg, #4D21C9 0%, #7755FF00 100%);
+
+    --secondary-color: white;
+
+    --font-color-dark: #303B59;
+    --font-color-dark-shade: #303B598b;
+    --font-color-light: #CAC9FF;
+    --font-color-light-shade: #cac9ff8b;
+
+    --reaction-color: #ff5555;
+    --memory-color: #FFB21E;
+    --verbal-color: #00BB8F;
+    --visual-color: #1125D6;
+
+    --font-family: 'Hanken Grotesk', Arial, sans-serif;
+}
+
+/* Utility */
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
+
+/* General Typography */
+h1 {
+    display: none;
+}
+
+
+h2 {
+    margin: 0;
+    padding-bottom: 1.167em;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Structure */
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #ECF2FF;
+}
+
+.results-summary-component {
+    width: 100%;
+    max-width: 736px;
+    border-radius: 2em;
+
+    position: relative;
+
+    font-family: var(--font-family);
+    font-size: 1.125rem;
+
+    background-color: var(--secondary-color);
+    box-shadow: 0px 30px 60px rgba(61, 108, 236, 0.15);
+
+    color: var(--font-color-dark);
+
+    transition: all 1s ease-out;
+}
+
+.results-summary-component > * {
+    padding: 38px;
+    overflow: hidden;
+}
+
+/* Overall Result Pane */
+.overall-result-pane {
+    height: 100%;
+    max-width: 368px;
+    border-radius: 2em;
+
+    z-index: 1;
+
+    text-align: center;
+
+    background-color: var(--primary-color);
+    background: var(--primary-color-gradient);
+    color: var(--font-color-light);
+
+    position: absolute;
+}
+
+.overall-score-container {
+    width: 12.5rem;
+    height: 12.5rem;
+    max-width: 292px;
+    max-height: 292px;
+    border-radius: 50%;
+    margin: 7px auto 28px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+    
+    color: var(--font-color-light-shade);
+    background-color: var(--primary-color-shade);
+    background: var(--primary-color-shade-gradient);
+}
+
+.overall-score-container output {
+    display: block;
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.125;
+
+    color: white;
+}
+
+.performance-description-title {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+
+    color: white;
+}
+
+.performance-description {
+    padding: 0 16px;
+    max-width: 19em;
+    margin: 0 auto;
+}
+/* End Overall Result Pane */
+
+/* Initialization and Loading */
+
+.init .results-summary-component {
+    opacity: 0;
+}
+
+.loading-pane {
+    display: none;
+}
+
+.loading .loading-pane {
+    border-radius: 2em;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: var(--font-color-light);
+    background: var(--primary-color-gradient);
+}
+
+.loading-pane h2 {
+    max-width: 6em;
+    text-align: center;
+}
+
+.loading-pane img {
+    width: 30px;
+    height: 30px;
+    opacity: .75;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+  }
+  
+  @keyframes spin {
+    0% {
+        transform:rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform:rotate(360deg);
+        opacity: 1;
+    }
+    100% {
+        transform:rotate(720deg);
+        opacity: 0;
+    }
+  }
+
+
+
+/* Details Pane */
+
+.details-pane {
+    width: 368px;
+    margin-left: 368px;
+    border-radius: 2em;
+
+    z-index: 0;
+
+    background: white;
+    transition: margin-left 1s ease-out;
+}
+
+.details-pane .categories-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.details-pane .result {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding: .95em;
+    border-radius: .75rem;
+}
+
+.details-pane .result > * {
+    position: relative;
+}
+
+.details-pane .result:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,.95);
+}
+
+.details-pane .result img {
+    flex-grow: 0;
+    margin-right: 14px;
+}
+
+.details-pane .result h3 {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    flex-grow: 1;
+}
+
+.details-pane .result p {
+    width: 4em;
+    flex-grow: 0;
+    color: var(--font-color-dark-shade);
+}
+
+.details-pane .result output {
+    padding-right: .25em;
+    font-weight: 700;
+
+    color: var(--font-color-dark);
+}
+
+.result.reaction {
+    color: var(--reaction-color);
+    background-color: var(--reaction-color);
+}
+
+.result.memory {
+    color: var(--memory-color);
+    background-color: var(--memory-color);
+}
+
+.result.verbal {
+    color: var(--verbal-color);
+    background-color: var(--verbal-color);
+}
+
+.result.visual {
+    color: var(--visual-color);
+    background-color: var(--visual-color);
+}
+
+.details-pane button {
+    width: 100%;
+    margin-top: 40px;
+    padding: 1em;
+    border: none;
+    border-radius: 2em;
+
+    font-size: 1.125rem;
+
+    color: white;
+    background-color: var(--font-color-dark );
+
+    cursor: pointer;
+}
+
+.details-pane button:hover {
+    background: var(--primary-color-gradient)
+}
+
+.details-pane button:active {
+    transform: translate(1px, 1px);
+}
+
+/* End Details Pane */
+
+/* Loading State */
+.loading .results-summary-component {
+    max-width: 368px;
+}
+
+.loading .overall-result-pane * {
+    visibility: hidden;
+}
+
+.loading .overall-result-pane .loading-pane {
+    display: block;
+}
+
+.loading .details-pane {
+    margin-left: 0;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 1.125rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+
+    .loading .results-summary-component {
+        min-height: 0;
+        max-height: 9em;
+        overflow: hidden;
+    }
+
+    .results-summary-component {
+        max-width: 100%;
+        min-height: 100vh;
+    }
+
+    .results-summary-component > * {
+        padding: 24px 32px 40px;
+    }    
+
+    .overall-score-container {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 25px;
+    }
+
+    .overall-score-container output {
+        font-size: 3.5rem;
+    }
+
+    .performance-description-title {
+        font-size: 1.5rem;
+    }
+
+    .loading .overall-result-pane {
+        border-radius: 2em;
+    }
+
+    .overall-result-pane {
+        position: static;
+        max-width: 100%;
+        border-radius: 0 0 2em 2em;
+    }
+
+    .details-pane {
+        width: 100%;
+        margin: 0;
+    }
+
+    .details-pane button {
+        margin-top: 1.333em;
+    }
+}

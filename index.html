@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="View your results summary here.">
+        <link rel="shortcut icon" type="image" href="assets/images/favicon/favicon-32x32.png">
+
+        <link rel="stylesheet" href="assets/css/results-summary-component.css">
+        <script src="assets/js/results-summary-component.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&display=swap" rel="stylesheet">
+
+        <title>Results Summary Component</title>
+    </head>
+    <body class="init loading">
+        <main class="results-summary-component">
+            <h1>Here are your results</h1>
+            <section class="overall-result-pane">
+                <h2>Your Result</h2>
+                <section class="overall-score-container">
+                    <h3><output id="overall-score"></output> of 100</h3>
+                </section>
+
+                <h3 class="performance-description-title"><output><em class="loading">Loading...</em></output></h3>
+                <p class="performance-description">
+                    
+                </p>
+            </section>
+            <section class="details-pane">
+                <h2>Summary</h2>
+                <div class="categories-container" id="categories-container">
+                    
+                </div>
+                <button type="button">Continue</button>
+            </section>
+            <section class="loading-pane">
+                <h2>Loading your results...</h2>
+                <img src="assets/images/loading-icon-white.svg" alt="Loading Spinner" width="30" height="30">
+            </section>
+        </main>
+    </body>
+</html>
