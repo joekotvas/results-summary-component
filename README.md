@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution on Github]()
+- [Solution on Github](https://github.com/joekotvas/results-summary-component/)
 - [Live Site on Netlify](https://results-summary-component-joekotvas.netlify.com)
 
 ## Notes
